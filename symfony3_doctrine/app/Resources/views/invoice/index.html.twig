@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Invoices list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Clientname</th>
+                <th>Clientacronym</th>
+                <th>Reference</th>
+                <th>Invoicedate</th>
+                <th>Duedate</th>
+                <th>Object</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+            <tr>
+                <td><a href="{{ path('invoice_show', { 'id': invoice.id }) }}">{{ invoice.id }}</a></td>
+                <td>{{ invoice.clientName }}</td>
+                <td>{{ invoice.clientAcronym }}</td>
+                <td>{{ invoice.reference }}</td>
+                <td>{% if invoice.invoiceDate %}{{ invoice.invoiceDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if invoice.dueDate %}{{ invoice.dueDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ invoice.object }}</td>
+                <td>{% if invoice.createdAt %}{{ invoice.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if invoice.updatedAt %}{{ invoice.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('invoice_show', { 'id': invoice.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('invoice_edit', { 'id': invoice.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('invoice_new') }}">Create a new invoice</a>
+        </li>
+    </ul>
+{% endblock %}
