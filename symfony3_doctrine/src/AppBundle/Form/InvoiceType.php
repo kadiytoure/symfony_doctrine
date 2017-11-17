@@ -13,7 +13,14 @@ class InvoiceType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('clientName')->add('clientAcronym')->add('reference')->add('invoiceDate')->add('dueDate')->add('object')->add('createdAt')->add('updatedAt');
+        $builder
+                ->add('clientName')
+                ->add('clientAcronym')
+                ->add('reference')
+                ->add('invoiceDate')
+                ->add('dueDate')
+                ->add('object')
+                ;
     }
     
     /**

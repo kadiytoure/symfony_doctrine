@@ -4,11 +4,6 @@ parameters:
     #parameter_name: value
 
 services:
-    invoice.event_listener:
-        class: AppBundle\EventListener\InvoiceListener
-        tags:
-            - { name: doctrine.event_listener, event: prePersist }
-            - { name: doctrine.event_listener, event: preUpdate }
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
@@ -38,3 +33,8 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    invoice.event_listener:
+        class: AppBundle\EventListener\InvoiceListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

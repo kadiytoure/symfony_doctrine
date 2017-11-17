@@ -59,4 +59,40 @@ class InvoiceListener {
         
         $invoice->setUpdatedAt(new \DateTime('now'));
     }
+    
+    /**
+     * 
+     * @param entity $invoice
+     * 
+     */
+    
+    private function setDueDate($invoice)
+    {
+        if (!$invoice instanceof Invoice) {
+            return;
+        }
+        
+        //$invoice->getInvoiceDate()  + 30 jours
+        
+        $invoice->getInvoiceDate(new \DateTime('mday'));
+    }
+    
+    /**
+     * 
+     * @param entity $invoice
+     *
+     */
+    private function setReference($invoice)
+    {
+        if (!$invoice instanceof Invoice) {
+            return;
+        }
+        
+        // Client Simplon, SPLY
+        // SPLY20171110
+        
+        $invoice->getReference(new \String());
+    }
+    
+    
 }
